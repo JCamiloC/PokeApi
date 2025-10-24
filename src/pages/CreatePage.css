@@ -1,0 +1,45 @@
+.create__form {
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.create__title {
+  margin: 0 0 8px 0;
+}
+
+.create__field {
+  display: grid;
+  gap: 6px;
+}
+
+.create__label {
+  font-weight: 600;
+}
+
+.create__error {
+  color: crimson;
+}
+
+.create__triple {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .create__triple { grid-template-columns: repeat(3, 1fr); }
+}
+
+.create__submit {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .create__submit { width: auto; }
+}
+
+.create__note {
+  color: var(--muted);
+}

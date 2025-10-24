@@ -4,6 +4,7 @@ import { addCustomPokemon } from '../store/customPokemonsSlice'
 import { useQuery } from '@apollo/client/react'
 import { GET_TYPES } from '../graphql/queries'
 import { validatePokemonForm, type PokemonForm } from '../utils/validation'
+import './CreatePage.css'
 
 type TypesData = { pokemon_v2_type: { id: number; name: string }[] }
 
@@ -33,40 +34,44 @@ export default function CreatePage() {
   return (
     <section className="page">
       <div className="container">
-        <form onSubmit={onSubmit} style={{ display: 'grid', gap: 12, maxWidth: 480 }}>
-          <h2 style={{ marginBottom: 8 }}>Crear Pokémon (local)</h2>
-          <label style={{ display: 'grid', gap: 6 }}>
-            <span style={{ fontWeight: 600 }}>Nombre</span>
+        <form onSubmit={onSubmit} className="create__form">
+          <h2 className="create__title">Crear Pokémon (local)</h2>
+
+          <label className="create__field">
+            <span className="create__label">Nombre</span>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="pidgey"
             />
-            {errors.name && <small style={{ color: 'crimson' }}>{errors.name}</small>}
+            {errors.name && <small className="create__error">{errors.name}</small>}
           </label>
-          <label style={{ display: 'grid', gap: 6 }}>
-            <span style={{ fontWeight: 600 }}>Tipo</span>
+
+          <label className="create__field">
+            <span className="create__label">Tipo</span>
             <select value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })}>
               <option value="">Selecciona…</option>
               {data?.pokemon_v2_type?.map((t: { id: number; name: string }) => (
                 <option key={t.id} value={t.name}>{t.name}</option>
               ))}
             </select>
-            {errors.type && <small style={{ color: 'crimson' }}>{errors.type}</small>}
+            {errors.type && <small className="create__error">{errors.type}</small>}
           </label>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
-            <label style={{ display: 'grid', gap: 6 }}>
-              <span style={{ fontWeight: 600 }}>Generación</span>
+
+          <div className="create__triple">
+            <label className="create__field">
+              <span className="create__label">Generación</span>
               <input
                 type="number"
                 value={form.generation}
                 onChange={(e) => setForm({ ...form, generation: e.target.value === '' ? '' : Number(e.target.value) })}
                 placeholder="1"
               />
-              {errors.generation && <small style={{ color: 'crimson' }}>{errors.generation}</small>}
+              {errors.generation && <small className="create__error">{errors.generation}</small>}
             </label>
-            <label style={{ display: 'grid', gap: 6 }}>
-              <span style={{ fontWeight: 600 }}>Altura</span>
+
+            <label className="create__field">
+              <span className="create__label">Altura</span>
               <input
                 type="number"
                 step="0.1"
@@ -74,10 +79,11 @@ export default function CreatePage() {
                 onChange={(e) => setForm({ ...form, height: e.target.value === '' ? '' : Number(e.target.value) })}
                 placeholder="10"
               />
-              {errors.height && <small style={{ color: 'crimson' }}>{errors.height}</small>}
+              {errors.height && <small className="create__error">{errors.height}</small>}
             </label>
-            <label style={{ display: 'grid', gap: 6 }}>
-              <span style={{ fontWeight: 600 }}>Peso</span>
+
+            <label className="create__field">
+              <span className="create__label">Peso</span>
               <input
                 type="number"
                 step="0.1"
@@ -85,11 +91,12 @@ export default function CreatePage() {
                 onChange={(e) => setForm({ ...form, weight: e.target.value === '' ? '' : Number(e.target.value) })}
                 placeholder="100"
               />
-              {errors.weight && <small style={{ color: 'crimson' }}>{errors.weight}</small>}
+              {errors.weight && <small className="create__error">{errors.weight}</small>}
             </label>
           </div>
-          <button type="submit">Crear</button>
-          <p style={{ color: 'var(--muted)' }}>Nota: Esta creación es local (no hay mutación real en PokeAPI).</p>
+
+          <button type="submit" className="create__submit">Crear</button>
+          <p className="create__note">Nota: Esta creación es local (no hay mutación real en PokeAPI).</p>
         </form>
       </div>
     </section>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite, removeFavorite } from '../store/favoritesSlice'
 import type { RootState } from '../store'
 import './PokemonCard.css'
+import { asset } from '../utils/asset'
 
 type Props = {
   id: number
@@ -29,7 +30,7 @@ export default function PokemonCard({ id, name, image, types }: Props) {
           }
         }}
       >
-        <img src={isFav ? '/heart-fill.svg' : '/heart.svg'} alt={isFav ? 'Favorito' : 'No favorito'} className="heart-img" />
+        <img src={isFav ? asset('heart-fill.svg') : asset('heart.svg')} alt={isFav ? 'Favorito' : 'No favorito'} className="heart-img" />
       </button>
       <div className="pk-card__num">#{String(id).padStart(3, '0')}</div>
       <Link to={`/pokemon/${name}`} className="pk-card__link">

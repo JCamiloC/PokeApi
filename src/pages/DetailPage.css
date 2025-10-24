@@ -1,6 +1,6 @@
 .detail{min-height:100dvh; background:var(--bg);}
 .detail__top{position:relative; height:340px; display:grid; place-items:center; color:#fff;}
-.detail__top::after{content:""; position:absolute; inset:0; background-image:url('/pokemonico.svg'); background-repeat:no-repeat; background-position:center; background-size:480px; opacity:.12; filter:brightness(0) invert(1);}
+.detail__bg{position:absolute; inset:0; background-repeat:no-repeat; background-position:center; background-size:480px; opacity:.12; filter:brightness(0) invert(1);}
 .detail__topbar{position:absolute; top:12px; left:12px; right:12px; display:flex; align-items:center; justify-content:space-between; z-index:3}
 .back{color:#fff; font-size:22px; font-weight:900;}
 .number{color:#fff; font-weight:800;}

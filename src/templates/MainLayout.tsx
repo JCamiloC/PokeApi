@@ -6,6 +6,7 @@ import { setSearch } from '../store/filtersSlice'
 import { useSelector as useReduxSelector } from 'react-redux'
 import { useState } from 'react'
 import FilterModal from '../components/FilterModal'
+import { asset } from '../utils/asset'
 
 export default function MainLayout() {
   const location = useLocation()
@@ -21,8 +22,8 @@ export default function MainLayout() {
       {!isDetail && (
       <header className="header header--red">
         <div className="header__brand">
-          <img src="/pokemonico.svg" alt="Pokémon" className="brand__icon" />
-          <Link to="/" className="brand">Pokédex</Link>
+          <img src={asset('pokemonico.svg')} alt="Pokémon" className="brand__icon" />
+          <Link to="/" className="brand">PokeApi</Link>
         </div>
         <nav className={`nav nav--center nav--desktop`}>
           <NavLink to="/" end>Inicio</NavLink>
@@ -56,7 +57,7 @@ export default function MainLayout() {
             onChange={(e) => dispatch(setSearch(e.target.value))}
           />
           <button className="filterbtn" type="button" aria-label="Cambiar criterio de filtro" onClick={() => setFilterOpen(true)}>
-            <img src={orderBy === 'name' ? '/name.svg' : '/number.svg'} alt="Criterio" style={{ width: 20, height: 20 }} />
+            <img src={orderBy === 'name' ? asset('name.svg') : asset('number.svg')} alt="Criterio" style={{ width: 20, height: 20 }} />
           </button>
         </div>
       </header>

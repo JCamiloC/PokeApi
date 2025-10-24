@@ -1,4 +1,7 @@
-## Pokédex (React + GraphQL)
+## PokeApi (React + GraphQL)
+
+[![Deploy](https://github.com/JCamiloC/PokeApi/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/JCamiloC/PokeApi/actions/workflows/gh-pages.yml)  
+Demo: https://JCamiloC.github.io/PokeApi/
 
 App en React que consume PokeAPI vía GraphQL para listar Pokémon, ver detalle, gestionar favoritos y crear Pokémon locales (mock). Incluye validación básica y tests de utilidades/estado.
 
@@ -60,4 +63,10 @@ Slice `favoritesSlice` con `addFavorite/removeFavorite` y persistencia en localS
 - Redux Toolkit para estado global (favoritos, filtros y customPokemons) con persistencia.
 - Búsqueda y ordenamiento en cliente para mantener la UI reactiva.
 - Estilos sin frameworks: CSS modular con variables y media queries.
+
+### Aviso de uso y fuentes
+- Framework: React
+- API REST: https://pokeapi.co/
+- GraphQL (console): https://beta.pokeapi.co/graphql/console/
+Los datos y sprites pertenecen a PokeAPI y sus contribuidores. Este proyecto es de uso educativo/demostrativo.
 

@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client/react'
 import { GET_POKEMON_DETAIL } from '../graphql/queries'
 import { getPokemonImage } from '../utils/image'
 import './DetailPage.css'
+import { asset } from '../utils/asset'
 
 export default function DetailPage() {
   const { name = '' } = useParams()
@@ -46,6 +47,7 @@ export default function DetailPage() {
   return (
     <section className="detail">
       <div className="detail__top" style={{ background: `var(--type-${primaryType})` }}>
+        <div className="detail__bg" style={{ backgroundImage: `url(${asset('pokemonico.svg')})` }} />
         <div className="detail__topbar">
           <Link to="/" className="back" aria-label="Volver">←</Link>
           <div className="number">{padded(poke.id)}</div>

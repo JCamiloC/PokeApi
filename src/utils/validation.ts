@@ -6,10 +6,6 @@ export type PokemonForm = {
   weight: number | ''
 }
 
-// Mini-explicación (Validación):
-// - Aquí validamos entradas del usuario antes de procesarlas.
-// - Regla clave del reto: nombre >= 3 y sin caracteres especiales.
-// - También validamos números positivos y que haya tipo.
 
 export const nameIsValid = (name: string): boolean => {
   if (name.trim().length < 3) return false

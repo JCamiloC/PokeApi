@@ -1,6 +1,6 @@
 ## Pokédex (React + GraphQL)
 
-Aplicación React que consume la PokeAPI vía GraphQL para listar Pokémon, ver detalle, filtrar por tipo y administrar favoritos. Incluye un formulario con validación para crear Pokémon locales (mock) y tests mínimos.
+App en React que consume PokeAPI vía GraphQL para listar Pokémon, ver detalle, gestionar favoritos y crear Pokémon locales (mock). Incluye validación básica y tests de utilidades/estado.
 
 ### Tech
 - React 19 + Vite + TypeScript
@@ -32,16 +32,11 @@ npm run preview
 - `src/templates/MainLayout*`: layout y navegación
 - `src/utils`: utilidades (validación, imagen)
 
-### Hooks (mini explicación)
-- `useState`: maneja estado local dentro de componentes. Ej: contador, paginación.
-- `useMemo`: memoriza cálculos costosos en función de dependencias.
-- `useSelector`/`useDispatch` (Redux): leen/actualizan el store global sin prop drilling.
-- `useQuery` (Apollo): ejecuta una consulta GraphQL y expone `{ data, loading, error }`. Se usa para traer la lista, tipos y el detalle.
-
-### GraphQL (mini clase)
-- GraphQL te permite pedir exactamente los campos que necesitas en una sola consulta.
-- Ejemplo (lista): ordenamos alfabéticamente y pedimos `id`, `name`, `types`, `sprites` y `generation_id`.
-- En Apollo, definimos la consulta con `gql` y la ejecutamos con `useQuery(QUERY, { variables })`. Apollo cachea las respuestas por clave de consulta + variables.
+### Funcionalidad
+- Lista: paginada, orden configurable (nombre/número), búsqueda por nombre o número.
+- Detalle: imagen, tipos, peso, altura, habilidades y estadísticas base.
+- Favoritos: agregar/quitar y persistencia en localStorage.
+- Crear: formulario de ejemplo con validación (nombre, números válidos).
 
 ### Validación de datos
 En `src/utils/validation.ts`:
@@ -53,13 +48,16 @@ Se usa en `CreatePage` para bloquear envíos inválidos.
 Slice `favoritesSlice` con `addFavorite/removeFavorite` y persistencia en localStorage. Vista en `/favorites`.
 
 ### Despliegue (GitHub Pages)
-- Ya está configurado el flujo en `.github/workflows/gh-pages.yml`.
-- Router: `HashRouter` para evitar 404 al refrescar en Pages.
+- Workflow listo en `.github/workflows/gh-pages.yml`.
+- HashRouter para evitar 404 al refrescar.
 - Pasos:
-	1) Crea un repo en GitHub y haz push de `main`.
-	2) En Settings → Pages, selecciona “GitHub Actions” como Source.
-	3) El workflow se ejecutará en cada push a `main` y publicará la app.
-	4) La URL la verás en la pestaña Actions o en Settings → Pages.
+  1) Sube `main` al repo en GitHub.
+  2) Settings → Pages → Source: “GitHub Actions”.
+  3) Cada push a `main` publica la app. La URL aparece en Actions o en Settings → Pages.
 
-### Mockups/UX
-Se siguió el estilo base del Figma referenciado (sin framework CSS). Puedes ajustar colores y spacing en los CSS.
+### Notas y decisiones
+- Apollo Client con caché por consulta/variables.
+- Redux Toolkit para estado global (favoritos, filtros y customPokemons) con persistencia.
+- Búsqueda y ordenamiento en cliente para mantener la UI reactiva.
+- Estilos sin frameworks: CSS modular con variables y media queries.
+

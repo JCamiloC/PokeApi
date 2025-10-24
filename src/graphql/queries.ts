@@ -1,10 +1,5 @@
 import { gql } from '@apollo/client'
 
-// Nota GraphQL (mini clase):
-// - gql es un template literal que marca una cadena como consulta GraphQL.
-// - En Hasura (que usa PokeAPI beta), puedes ordenar con order_by y filtrar con where.
-// - Pide exactamente los campos que necesitas para optimizar la red y el render.
-
 export const GET_POKEMONS = gql`
   query GetPokemons($limit: Int!, $offset: Int!, $type: String) {
     pokemon_v2_pokemon(

@@ -7,8 +7,6 @@ import PokemonCard from '../components/PokemonCard'
 import { getPokemonImage } from '../utils/image'
 
 export default function HomePage() {
-  // Hook: useState
-  // useState es un Hook que maneja estado local dentro de un componente funcional.
   const [limit, setLimit] = useState(48)
   const type = useSelector((s: RootState) => s.filters.type)
   const search = useSelector((s: RootState) => s.filters.search)
@@ -17,8 +15,6 @@ export default function HomePage() {
   const query = type === 'all' ? GET_POKEMONS : GET_POKEMONS_BY_TYPE
   const variables = type === 'all' ? { limit, offset: 0 } : { limit, offset: 0, type }
 
-  // Hook GraphQL: useQuery
-  // useQuery ejecuta la consulta y expone { data, loading, error }.
   const { data, loading, error } = useQuery(query, { variables })
 
   type GqlPokemon = {
@@ -55,7 +51,7 @@ export default function HomePage() {
   return (
     <section className="page">
       <div className="container" style={{ width: '100%' }}>
-        {/* Filtro por tipo se movió al botón del header (modal futuro). */}
+  {/* Filtro por tipo se maneja en el botón del header (modal). */}
 
         {loading && <p style={{ color: 'var(--muted)' }}>Cargando…</p>}
         {error && <p style={{ color: 'crimson' }}>Error: {String(error.message || error)}</p>}

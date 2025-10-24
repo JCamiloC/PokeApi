@@ -10,8 +10,6 @@ import router from './routes/router'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/* Hook: Provider/ApolloProvider */}
-    {/* Un Hook es una función especial de React que te permite "engancharte" a funcionalidades (estado, contexto, etc.) sin clases. */}
     <Provider store={store}>
       <ApolloProvider client={apolloClient}>
         <RouterProvider router={router} />
